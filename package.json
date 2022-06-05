@@ -1,0 +1,12 @@
+{
+  "name": "codehub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve:vue-demo": "pnpm run serve --filter 'vue-demo'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
