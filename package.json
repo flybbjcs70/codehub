@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve:vue-demo": "pnpm run serve --filter 'vue-demo'"
+    "serve:vue-demo": "pnpm --filter vue-demo serve"
   },
   "keywords": [],
   "author": "",

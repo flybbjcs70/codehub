@@ -1,18 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <a href="javascript:;" @click="onClick">test</a>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import createDialog from 'create-dialog'
+import HelloWord from './components/HelloWorld.vue'
 export default {
   name: 'App',
+  mixins: [createDialog('dialog', HelloWord, {
+    onUpdate () {},
+    dialogProps: {
+      title: 'test',
+      width: '80%'
+    }
+  })],
   components: {
-    HelloWorld
+  },
+  methods: {
+    onClick () {
+      this.dialog.show({
+        a: 1,
+        b: 2
+      })
+    }
   }
+
 }
 </script>
 
