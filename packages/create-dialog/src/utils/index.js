@@ -27,7 +27,7 @@ export const defaultOptions = {
   dialogProps: {
     customClass: 'el-dialog-customClass',
     width: '700px',
-    title: '',
+    title: '提示框',
     closeOnClickModal: false
   }
 }

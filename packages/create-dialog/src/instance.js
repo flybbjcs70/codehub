@@ -1,8 +1,8 @@
-import Vue from 'vue'
-const Ctor = Vue.extend()
+import { Vue } from './install'
 
 const identity = (v) => v
 
+const opt = {}
 export function createInstance(vm, Form, options) {
   const {
     onInit = identity,
@@ -10,6 +10,8 @@ export function createInstance(vm, Form, options) {
     dialogProps = {},
     showFooter = true
   } = options
+  const Ctor = Vue.extend(opt)
+
   const instance = new Ctor({
     name: 'create-dialog',
     parent: vm,
@@ -124,7 +126,11 @@ export function createInstance(vm, Form, options) {
         const { model } = this
         return h(Form, {
           props: {
-            value: model
+            value: model,
+            $$updateLoading: this.updateLoading,
+            $$disabled: this.disabled,
+            $$update: this.onUpdate,
+            $$close: this.close
           },
           on: {
             validate: (valid) => {
@@ -155,3 +161,6 @@ export function createInstance(vm, Form, options) {
 
   return instance
 }
+
+
+
