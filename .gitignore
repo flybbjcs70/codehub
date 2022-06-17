@@ -1,2 +1,7 @@
 .pnpm
 node_modules/
+.cache
+.temp
+.DS_Store
+dist
+.DS_Store

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve:vue-demo": "pnpm --filter vue-demo serve"
+    "serve:vue-demo": "pnpm --filter vue-demo serve",
+    "dev:docs": "pnpm --filter vuepress dev",
+    "build:docs": "pnpm --filter vuepress build"
   },
   "keywords": [],
   "author": "",
