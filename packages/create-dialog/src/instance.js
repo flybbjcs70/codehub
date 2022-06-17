@@ -1,23 +1,29 @@
-import { Vue } from './install'
-
 const identity = (v) => v
 
 const opt = {}
-export function createInstance(vm, Form, options) {
+export function createInstance(Vue, vm, Form, options) {
   const {
     onInit = identity,
     onUpdate = identity,
     dialogProps = {},
-    showFooter = true
+    dialogListeners = {},
+    showFooter = true,
+    responseHander = identity,
+    successHandler = identity,
+    failHandler = identity,
+    buttons = {}
   } = options
   const Ctor = Vue.extend(opt)
 
   const instance = new Ctor({
     name: 'create-dialog',
     parent: vm,
+    created() {
+      this.dialogOptions = options
+    },
     data() {
       return {
-        visible: true,
+        visible: false,
         updateLoading: false,
         initLoading: false,
         model: null,
@@ -32,6 +38,8 @@ export function createInstance(vm, Form, options) {
     methods: {
       onInit(params) {
         this.initLoading = true
+        this.visible = true
+
         const res = Promise.resolve(onInit(params))
 
         res
@@ -44,12 +52,15 @@ export function createInstance(vm, Form, options) {
           .finally(() => {
             this.initLoading = false
           })
-
       },
       onUpdate() {
         this.updateLoading = true
-        onUpdate()
-        this.updateLoading = false
+        Promise.resolve(onUpdate({ ...this.model }))
+          .then(responseHander)
+          .then(successHandler, failHandler)
+          .finally(() => {
+            this.updateLoading = false
+          })
       },
       onRender() {
         const h = this.$createElement
@@ -64,6 +75,7 @@ export function createInstance(vm, Form, options) {
               visible: this.visible
             },
             on: {
+              ...dialogListeners,
               'update:visible': () => {
                 this.visible = false
               }
@@ -88,36 +100,40 @@ export function createInstance(vm, Form, options) {
             slot: 'footer'
           },
           [
-            h(
-              'el-button',
-              {
-                props: {
-                  type: 'plain'
-                },
-                on: {
-                  click: () => {
-                    this.visible = false
-                  }
-                }
-              },
-              '取消'
-            ),
-            h(
-              'el-button',
-              {
-                props: {
-                  loading: this.updateLoading,
-                  disabled: this.disabled,
-                  type: 'primary'
-                },
-                on: {
-                  click: () => {
-                    this.onUpdate()
-                  }
-                }
-              },
-              '保存'
-            )
+            buttons['cancel']
+              ? h(
+                  'el-button',
+                  {
+                    props: {
+                      type: 'plain'
+                    },
+                    on: {
+                      click: () => {
+                        this.visible = false
+                      }
+                    }
+                  },
+                  buttons['cancel']
+                )
+              : null,
+            buttons['update']
+              ? h(
+                  'el-button',
+                  {
+                    props: {
+                      loading: this.updateLoading,
+                      disabled: this.disabled,
+                      type: 'primary'
+                    },
+                    on: {
+                      click: () => {
+                        this.onUpdate()
+                      }
+                    }
+                  },
+                  buttons['update']
+                )
+              : null
           ]
         )
       },
@@ -145,7 +161,7 @@ export function createInstance(vm, Form, options) {
       show(params) {
         this.onInit(params)
       },
-      close () {
+      close() {
         this.$refs.dialog.hide()
       }
     }
@@ -161,6 +177,3 @@ export function createInstance(vm, Form, options) {
 
   return instance
 }
-
-
-

@@ -1,6 +1,8 @@
 import { createInstance } from './instance'
 import { mergeObj, defaultOptions } from './utils'
+let _Vue = null
 
+let custonOptions = {}
 export default function factory(namespace = 'dialog', Form, options) {
   return {
     data (vm) {
@@ -8,7 +10,7 @@ export default function factory(namespace = 'dialog', Form, options) {
         [namespace]: {
           _instance: null,
           show (params) {
-            const instance = this._instance = createInstance(vm, Form, mergeObj({}, defaultOptions, options))
+            const instance = this._instance = createInstance(_Vue, vm, Form, mergeObj({}, defaultOptions, custonOptions, options))
             instance.show(params)
           },
           close () {
@@ -20,3 +22,13 @@ export default function factory(namespace = 'dialog', Form, options) {
     }
   }
 }
+factory.install = install
+
+function install (Vue, options) {
+  if(_Vue && Vue === Vue) return
+  _Vue = Vue
+
+  custonOptions = mergeObj({}, options)
+
+}
+

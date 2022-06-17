@@ -10,11 +10,21 @@ import HelloWord from './components/HelloWorld.vue'
 export default {
   name: 'App',
   mixins: [createDialog('dialog', HelloWord, {
-    onUpdate () {},
+    onUpdate () {
+      return new Promise(function(resolve) {
+        setTimeout(() => {
+          resolve({
+            success: false,
+            message: 'aklfjsjfjsljflkjsj',
+            data: [1,2,3]
+          })
+        }, 400);
+      })
+    },
     dialogProps: {
-      title: 'test',
       width: '80%'
-    }
+    },
+    buttons: {cancel: '关闭'}
   })],
   components: {
   },

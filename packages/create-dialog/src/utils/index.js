@@ -1,4 +1,3 @@
-import { Message } from 'element-ui'
 
 export function mergeObj (target, ...srcs) {
     for (let i = 0; i < srcs.length; i++) {
@@ -16,12 +15,13 @@ export function mergeObj (target, ...srcs) {
 export const loop = function () {}
 export const identity = (v) => v
 
-export function showMsg (message, type = 'success') {
-    Message[type](message)
-}
 
 export const defaultOptions = {
   showFooter: true,
+  buttons: {
+    cancel: '取消',
+    update: '保存'
+  },
   onInit: identity,
   onUpdate: identity,
   dialogProps: {
@@ -29,5 +29,9 @@ export const defaultOptions = {
     width: '700px',
     title: '提示框',
     closeOnClickModal: false
-  }
+  },
+  responseHander: identity,
+  successHandler: identity,
+  failHander: identity,
+  dialogListeners: {}
 }
