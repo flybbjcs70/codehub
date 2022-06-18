@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "serve:vue-demo": "pnpm --filter vue-demo serve",
-    "dev:docs": "pnpm --filter vuepress dev",
-    "build:docs": "pnpm --filter vuepress build"
+    "dev:docs": "pnpm --filter vuepress-v1 dev",
+    "build:docs": "pnpm --filter vuepress-v1 build"
   },
   "keywords": [],
   "author": "",
