@@ -7,7 +7,7 @@
   "scripts": {
     "serve:vue-demo": "pnpm --filter vue-demo serve",
     "dev:docs": "pnpm --filter vuepress-v1 dev",
-    "build:docs": "pnpm --filter vuepress-v1 build"
+    "build:docs": "pnpm --filter vuepress-v2 build"
   },
   "keywords": [],
   "author": "",
