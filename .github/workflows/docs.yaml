@@ -33,7 +33,7 @@ jobs:
         run: pnpm run build:docs
 
       - name: publish
-        uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
+        uses: cpina/github-action-push-to-another-repository@main
         with:
           source-directory: packages/vuepress-v2/docs/.vuepress/dist/
           destination-github-username: 'flybbjcs70'
