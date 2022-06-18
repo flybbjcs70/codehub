@@ -32,16 +32,25 @@ jobs:
       - name: Build VuePress site
         run: pnpm run build:docs
 
+      - name: publish
+        uses: s0/git-publish-subdir-action@master
+        env:
+          REPO: flybbjcs70/flybbjcs70.github.io
+          BRANCH: master
+          FOLDER: packages/vuepress-v2/docs/.vuepress/dist        
+          SSH_PRIVATE_KEY: ${{ secrets.publish }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          # 部署到 gh-pages 分支
-          target_branch: master
-          repo: flybbjcs70/flybbjcs70.github.io
-          # 部署目录为 VuePress 的默认输出目录
-          build_dir: packages/vuepress-v2/docs/.vuepress/dist
-        env:
-          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Deploy to GitHub Pages
+      #   uses: crazy-max/ghaction-github-pages@v2
+      #   with:
+      #     # 部署到 gh-pages 分支
+      #     target_branch: master
+      #     repo: flybbjcs70/flybbjcs70.github.io
+      #     # 部署目录为 VuePress 的默认输出目录
+      #     build_dir: packages/vuepress-v2/docs/.vuepress/dist
+      #   env:
+      #     # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
