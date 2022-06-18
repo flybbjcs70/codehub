@@ -42,9 +42,7 @@ jobs:
           commit-message: vuepress-v2 publish from $GITHUB_REF
           target-branch: master
         env:
-          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}     
-          SSH_PRIVATE_KEY: ${{ secrets.publish }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}     
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
