@@ -33,11 +33,16 @@ jobs:
         run: pnpm run build:docs
 
       - name: publish
-        uses: s0/git-publish-subdir-action@master
+        uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
+        with:
+          source-directory: packages/vuepress-v2/docs/.vuepress/dist/
+          destination-github-username: 'flybbjcs70'
+          destination-repository-name: 'flybbjcs70.github.io'
+          user-email: wenze@126.com
+          commit-message: vuepress-v2 publish from $GITHUB_REF
+          target-branch: master
         env:
-          REPO: flybbjcs70/flybbjcs70.github.io
-          BRANCH: master
-          FOLDER: packages/vuepress-v2/docs/.vuepress/dist        
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}     
           SSH_PRIVATE_KEY: ${{ secrets.publish }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
