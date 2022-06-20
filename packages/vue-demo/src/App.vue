@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import createDialog from 'create-dialog'
+import createDialog from '@zewen/create-dialog'
 import HelloWord from './components/HelloWorld.vue'
 export default {
   name: 'App',
@@ -14,7 +14,7 @@ export default {
       return new Promise(function(resolve) {
         setTimeout(() => {
           resolve({
-            success: false,
+            success: true,
             message: 'aklfjsjfjsljflkjsj',
             data: [1,2,3]
           })

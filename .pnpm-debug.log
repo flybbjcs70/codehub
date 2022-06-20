@@ -1,0 +1,116 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 3,
+    "total": 3,
+    "workspacePrefix": "/Users/zewen/github/codehub"
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "codehub",
+      "version": "1.0.0",
+      "packageManager": "pnpm@7.1.0",
+      "description": "",
+      "main": "index.js",
+      "scripts": {
+        "serve:vue-demo": "pnpm --filter vue-demo serve",
+        "dev:docs": "pnpm --filter vuepress-v2 dev",
+        "build:docs": "pnpm --filter vuepress-v2 build"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC"
+    },
+    "prefix": "/Users/zewen/github/codehub"
+  },
+  "2 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@zewen/create-dialog",
+      "version": "1.0.0",
+      "description": "",
+      "main": "src/mixin.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "files": [
+        "dist"
+      ],
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "dependencies": {
+        "element-ui": "^2.15.9",
+        "vue": "^2.6.14"
+      }
+    },
+    "prefix": "/Users/zewen/github/codehub/packages/create-dialog"
+  },
+  "3 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "vue-demo",
+      "version": "0.1.0",
+      "private": true,
+      "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint"
+      },
+      "dependencies": {
+        "core-js": "^3.8.3",
+        "create-dialog": "workspace:^1.0.0",
+        "element-ui": "^2.15.9",
+        "vue": "^2.6.14"
+      },
+      "devDependencies": {
+        "@babel/core": "^7.12.16",
+        "@babel/eslint-parser": "^7.12.16",
+        "@vue/cli-plugin-babel": "^5.0.0",
+        "@vue/cli-plugin-eslint": "^5.0.0",
+        "@vue/cli-service": "^5.0.0",
+        "eslint": "^7.32.0",
+        "eslint-plugin-vue": "^8.0.3",
+        "vue-template-compiler": "^2.6.14"
+      },
+      "eslintConfig": {
+        "root": true,
+        "env": {
+          "node": true
+        },
+        "extends": [
+          "plugin:vue/essential",
+          "eslint:recommended"
+        ],
+        "parserOptions": {
+          "parser": "@babel/eslint-parser"
+        },
+        "rules": {
+          "no-debugger": "off"
+        }
+      },
+      "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+      ]
+    },
+    "prefix": "/Users/zewen/github/codehub/packages/vue-demo"
+  },
+  "4 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/Users/zewen/Library/pnpm/store/v3",
+    "virtualStoreDir": "/Users/zewen/github/codehub/node_modules/.pnpm"
+  },
+  "5 debug pnpm:stage": {
+    "prefix": "/Users/zewen/github/codehub",
+    "stage": "resolution_started"
+  },
+  "6 error pnpm": {
+    "code": "ERR_PNPM_NO_MATCHING_VERSION_INSIDE_WORKSPACE",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "In packages/vue-demo: No matching version found for create-dialog@^1.0.0 inside the workspace",
+      "code": "ERR_PNPM_NO_MATCHING_VERSION_INSIDE_WORKSPACE",
+      "stack": "pnpm: In packages/vue-demo: No matching version found for create-dialog@^1.0.0 inside the workspace\n    at tryResolveFromWorkspace (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:84540:15)\n    at resolveNpm (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:84432:39)\n    at Object.resolve (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:84662:34)\n    at ctx.requestsQueue.add.priority (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:91358:75)\n    at run (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:91119:90)\n    at PQueue._tryToStartAnother (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:91073:13)\n    at /usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:91132:16\n    at new Promise (<anonymous>)\n    at PQueue.add (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:91114:16)\n    at resolveAndFetch (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:91358:55)"
+    }
+  }
+}

@@ -24,6 +24,7 @@ export const defaultOptions = {
   },
   onInit: identity,
   onUpdate: identity,
+  closeOnUpdateSuccess: true,
   dialogProps: {
     customClass: 'el-dialog-customClass',
     width: '700px',

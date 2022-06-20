@@ -9,6 +9,11 @@ export default {
   name: 'HelloWorld',
   props: {
     value: Object
+  },
+  watch: {
+    value () {
+      this.$emit('validate', false)
+    }
   }
 }
 </script>

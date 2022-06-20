@@ -1,5 +1,5 @@
 {
-  "name": "create-dialog",
+  "name": "@zewen/create-dialog",
   "version": "1.0.0",
   "description": "",
   "main": "src/mixin.js",

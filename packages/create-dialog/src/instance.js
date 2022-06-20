@@ -11,6 +11,7 @@ export function createInstance(Vue, vm, Form, options) {
     responseHander = identity,
     successHandler = identity,
     failHandler = identity,
+    closeOnUpdateSuccess = true,
     buttons = {}
   } = options
   const Ctor = Vue.extend(opt)
@@ -40,7 +41,7 @@ export function createInstance(Vue, vm, Form, options) {
         this.initLoading = true
         this.visible = true
 
-        const res = Promise.resolve(onInit(params))
+        const res = Promise.resolve(onInit(params, vm))
 
         res
           .then((data) => {
@@ -55,9 +56,15 @@ export function createInstance(Vue, vm, Form, options) {
       },
       onUpdate() {
         this.updateLoading = true
-        Promise.resolve(onUpdate({ ...this.model }))
+        Promise.resolve(onUpdate({ ...this.model }, vm))
           .then(responseHander)
-          .then(successHandler, failHandler)
+          .then(
+            (res) => {
+              closeOnUpdateSuccess && this.close()
+              successHandler(res, vm)
+            },
+            (reason) => failHandler(reason, vm)
+          )
           .finally(() => {
             this.updateLoading = false
           })
