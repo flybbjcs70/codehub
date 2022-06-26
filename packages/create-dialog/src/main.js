@@ -1,5 +1,5 @@
 import { createInstance } from './instance'
-import { mergeObj, defaultOptions } from './utils'
+import { mergeObj, defaultOptions } from './utils/index.js'
 let _Vue = null
 
 let custonOptions = {}
