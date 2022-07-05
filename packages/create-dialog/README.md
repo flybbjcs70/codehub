@@ -64,7 +64,7 @@ export default {
 ## type
 
 ```ts
-function createDialog(namespace:string, Form: VueComponentOptions | VueConstructor, Options): {
+function createDialog(namespace:string, Form: VueComponentOptions | VueConstructor, options: Options): {
   data () {
     return [namespace]{
       show(data:object):void,
@@ -91,7 +91,7 @@ interface Options = {
   },
   responseHander: function,
   successHandler: function,
-  failHander: function,
+  failHandler: function,
   dialogListeners: object
 }
 
