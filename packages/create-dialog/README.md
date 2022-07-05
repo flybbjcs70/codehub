@@ -1,5 +1,12 @@
 # A mixin of el-dialog that close to business scenarios
 
+## Install
+
+```js
+ npm install @zewen/create-dialog
+ 
+ yan add @zewen/create-dialog
+```
 
 ## Step1
 ### gloabl options handler setting
