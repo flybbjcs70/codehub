@@ -5,7 +5,7 @@
 ```js
  npm install @zewen/create-dialog
  
- yan add @zewen/create-dialog
+ yarn add @zewen/create-dialog
 ```
 
 ## Step1
